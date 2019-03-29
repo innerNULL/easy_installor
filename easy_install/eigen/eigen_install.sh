@@ -7,7 +7,7 @@ ROOT=$(pwd)
 wget http://bitbucket.org/eigen/eigen/get/3.3.7.tar.gz
 tar -zxvf *.tar.gz -C ./
 #git clone https://github.com/eigenteam/eigen-git-mirror.git
-mv ./eigen* ./eigen
+mv ./eigen-eigen* ./eigen
 
 cd ./eigen && mkdir ./build && cd ./build
 cmake ../
