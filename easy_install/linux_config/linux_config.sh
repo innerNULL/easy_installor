@@ -26,9 +26,14 @@ rm -rf /var/lib/apt/lists/*
 chsh -s /usr/bin/zsh && zsh
 
 # config tmux
-touch ~/.tmux.conf && echo "set -g mode-keys vi" >> ~/.tmux.conf
+touch ~/.tmux.conf 
+echo "set -g mode-keys vi" >> ~/.tmux.conf 
+echo set -g default-terminal "screen-256color" >> ~/.tmux.conf
+echo export TERM=xterm-256color >> ~/.zshrc
+
 # Fix zsh tab completion duplicating command name bug
-echo DISABLE_AUTO_TITLE="true" >> ~/.zshrc
+echo DISABLE_AUTO_TITLE="true" >> ~/.zshrc 
+
 # sync .zshrc
 cat ~/.bashrc >> ~/.zshrc
 # install oh-my-zsh
