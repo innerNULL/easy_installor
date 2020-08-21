@@ -1,2 +1,2 @@
-# easy_install
-Installing utilities for several frameworks.
+# eastallor
+EASy inSTALLER.
