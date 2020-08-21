@@ -1,11 +1,15 @@
 # Author:
 # Date: 2019-03-13
 
+version_l1="4.0"
+version_l2="0"
 
-wget https://download.open-mpi.org/release/open-mpi/v4.0/openmpi-4.0.0.tar.gz
-tar -zxvf ./openmpi*
+name_temp=openmpi-${version_l1}.${version_l2}
+
+wget https://download.open-mpi.org/release/open-mpi/v${version_l1}/${name_temp}.tar.gz
+tar -zxvf ./${name_temp}.tar.gz
 rm ./*.tar.gz
-mv ./openmpi* ./openmpi
+mv ./${name_temp} ./openmpi
 
 cd ./openmpi
 ./configure --prefix=/usr/local
@@ -19,4 +23,4 @@ echo "export MANPATH=$MPI_ROOT/man:$MANPATH" >> ~/.zshrc
 source ~/.zshrc
 
 cd ../
-rm -rf openmpi
+#rm -rf openmpi
