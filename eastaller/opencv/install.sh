@@ -4,9 +4,10 @@ set -x
 
 CURR_PATH_=$(pwd)
 GITHUB_PATH="opencv"
-QT_CMAKE_CONF="/usr/local/Cellar/qt/5.14.0/"
+#QT_CMAKE_CONF="/usr/local/Cellar/qt/5.14.0/"
+QT_CMAKE_CONF="/usr/local/Cellar/qt/5.12.0/"
 
-#git clone https://github.com/opencv/opencv.git
+git clone https://github.com/opencv/opencv.git
 cd ${GITHUB_PATH}
 mkdir build && cd build
 
