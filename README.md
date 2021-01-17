@@ -1,2 +1,2 @@
-# eastallor
-EASy inSTALLER.
+# eastall
+EASy inSTALL.
