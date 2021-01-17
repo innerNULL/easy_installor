@@ -6,7 +6,6 @@ set -x
 
 apt-get update
 apt-get install -y --no-install-recommends \
-    cmake \
     git \
     zsh \
     curl \
@@ -33,8 +32,6 @@ echo DISABLE_AUTO_TITLE="true" >> ~/.zshrc
 cat ~/.bashrc >> ~/.zshrc
 # install oh-my-zsh
 sh -c "$(wget --no-check-certificate https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-# install spacevim
-#curl -sLf https://spacevim.org/cn/install.sh | bash
 
 # install python and pip
 apt-get update && apt-get -y install python3 python3-pip 
@@ -45,9 +42,18 @@ source ~/.zshrc
 
 # install necessary python libraries
 # TODO: Fix following `pip` bug
-pip install numpy \
-            pandas \
-            pytorch \
-            sklearn
+#pip install numpy \
+#            pandas \
+#            pytorch \
+#            sklearn
 
 rm -rf ./*
+
+
+
+# install execs
+mkdir -p /tmp/install && cd /tmp/install
+# install cmake
+curl https://raw.githubusercontent.com/innerNULL/eastall/master/eastall/cmake/install.sh | sh
+# clean
+rm -rf /tmp/install
