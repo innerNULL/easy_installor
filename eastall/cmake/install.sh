@@ -13,6 +13,6 @@ wget ${TARGET_URL}
 
 tar -zxvf cmake-${TARGET_VERSION}.tar.gz
 cd cmake-${TARGET_VERSION}
-./bootstrap --prefix=/usr/local/cmake
+./bootstrap #--prefix=/usr/local/cmake
 make -j4
 make install
