@@ -49,6 +49,8 @@ source ~/.zshrc
 
 rm -rf ./*
 
+# Untest apt install
+apt install p7zip-full
 
 
 # install execs
