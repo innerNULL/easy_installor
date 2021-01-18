@@ -1,0 +1,28 @@
+# file: dockerd.sh
+# date: 2021-01-18
+
+
+set -x
+
+TARGET_REPOSITORY=$1
+TARGET_TAG=$2
+CONTAINER_NAME=$3
+MOUNTING_PATH=$4
+SHELL=$5
+
+MOUNTING_TARGET_PATH="/workspace"
+
+_IMAGE_INFO=${TARGET_REPOSITORY}:${TARGET_TAG}
+_MOUNTING_INFO=${MOUNTING_PATH=$4}:${MOUNTING_TARGET_PATH}
+
+echo "_IMAGE_INFO=${_IMAGE_INFO}"
+echo "_MOUNTING_INFO=${_MOUNTING_INFO}"
+echo "CONTAINER_NAME=${CONTAINER_NAME}"
+
+
+sudo docker run -it --privileged \
+    --name ${CONTAINER_NAME} \
+    -v ${_MOUNTING_INFO} \
+    --net=host \
+    ${_IMAGE_INFO} \
+    ${SHELL}
