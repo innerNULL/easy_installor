@@ -22,16 +22,15 @@ apt-get install openssh-client openssh-server
 service ssh restart
 rm -rf /var/lib/apt/lists/*
 
-chsh -s /usr/bin/zsh && zsh
 
+# Configs
 # config tmux
 touch ~/.tmux.conf && curl https://raw.githubusercontent.com/innerNULL/config4/main/config4/tmux/tmux.conf >> ~/.tmux.conf
-# Fix zsh tab completion duplicating command name bug
-echo DISABLE_AUTO_TITLE="true" >> ~/.zshrc
-# sync .zshrc
-cat ~/.bashrc >> ~/.zshrc
-# install oh-my-zsh
-sh -c "$(wget --no-check-certificate https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+# Config bash
+echo DISABLE_AUTO_TITLE="true" >> ~/.bashrc
+curl https://raw.githubusercontent.com/innerNULL/config4/main/config4/bash/bashrc >> ~/.zshrc
+# Config vim
+touch ~/.vimrc && curl https://raw.githubusercontent.com/innerNULL/config4/main/config4/vim/vimrc >> ~/.vimrc
 
 # install python and pip
 apt-get update && apt-get -y install python3 python3-pip 
