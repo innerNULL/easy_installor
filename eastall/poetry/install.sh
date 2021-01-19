@@ -13,4 +13,4 @@ echo "# Python poetry config" >> ~/.bashrc
 echo "alias poetry='python -m poetry'" >> ~/.bashrc
 echo "# Python poetry config end" >> ~/.bashrc
 
-source ~/.bashrc
+. ~/.bashrc

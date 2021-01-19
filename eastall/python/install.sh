@@ -25,7 +25,7 @@ echo "alias pip='/usr/local/python3/bin/python3 -m pip'" >> ~/.bashrc
 echo "PATH=${PATH}:/usr/local/python3/bin/" >> ~/.bashrc
 echo "# Python conf end" >> ~/.bashrc
 
-source ~/.bashrc
+. ~/.bashrc
 
 ln -s /usr/local/python3/bin/python3 /usr/bin/python3
 ln -s /usr/local/python3/bin/python3 /usr/bin/python
