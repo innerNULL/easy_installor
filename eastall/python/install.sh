@@ -24,3 +24,4 @@ echo "# Python conf end" >> ~/.bashrc
 
 source ~/.bashrc
 
+cd ${CURR_PATH} && rm -rf ${TMP_PATH}
