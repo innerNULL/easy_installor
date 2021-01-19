@@ -27,4 +27,8 @@ echo "# Python conf end" >> ~/.bashrc
 
 source ~/.bashrc
 
+ln -s /usr/local/python3/bin/python3 /usr/bin/python3
+ln -s /usr/local/python3/bin/python3 /usr/bin/python
+
+
 cd ${CURR_PATH} && rm -rf ${TMP_PATH}
