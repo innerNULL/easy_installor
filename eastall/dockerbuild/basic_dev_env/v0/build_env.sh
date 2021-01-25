@@ -5,6 +5,8 @@
 set -x
 
 apt-get update
+apt-get upgrade
+apt-get dist-upgrade
 apt-get install -y --no-install-recommends \
     git \
     zsh \
@@ -17,6 +19,8 @@ apt-get install -y --no-install-recommends \
     gcc g++ \
     ca-certificates \
     libssl-dev \
+    libffi-dev \
+    build-essential \
     p7zip-full \
     make
 apt-get remove openssh-client openssh-server
@@ -47,3 +51,7 @@ curl https://raw.githubusercontent.com/innerNULL/eastall/master/eastall/poetry/i
 curl https://raw.githubusercontent.com/innerNULL/eastall/master/eastall/cmake/install.sh | sh
 # clean
 rm -rf /tmp/install
+
+
+# Post progress
+ldconfig
