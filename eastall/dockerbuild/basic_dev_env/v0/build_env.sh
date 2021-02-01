@@ -14,15 +14,19 @@ apt-get install -y --no-install-recommends \
     vim \
     wget \
     tar \
+    unzip \
     tmux \
     ssh \
     gcc g++ \
+    autoconf \
+    automake \
+    make \
+    libtool \
     ca-certificates \
     libssl-dev \
     libffi-dev \
     build-essential \
-    p7zip-full \
-    make
+    p7zip-full
 apt-get remove openssh-client openssh-server
 apt-get install openssh-client openssh-server
 service ssh restart
