@@ -10,6 +10,7 @@ apt-get update
 apt-get upgrade
 apt-get dist-upgrade
 apt-get install -y --no-install-recommends \
+    software-properties-common \
     git \
     zsh \
     curl \
