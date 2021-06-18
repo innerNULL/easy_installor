@@ -35,12 +35,12 @@ rm -rf /var/lib/apt/lists/*
 
 # Configs
 # config tmux
-curl https://raw.githubusercontent.com/innerNULL/config4/main/config4/tmux/tmux.conf >> ~/.tmux.conf
+curl https://ghproxy.com/https://raw.githubusercontent.com/innerNULL/config4/main/config4/tmux/tmux.conf >> ~/.tmux.conf
 # Config bash
 echo DISABLE_AUTO_TITLE="true" >> ~/.bashrc
-curl https://raw.githubusercontent.com/innerNULL/config4/main/config4/bash/bashrc >> ~/.bashrc
+curl https://ghproxy.com/https://raw.githubusercontent.com/innerNULL/config4/main/config4/bash/bashrc >> ~/.bashrc
 # Config vim
-curl https://raw.githubusercontent.com/innerNULL/config4/main/config4/vim/vimrc >> ~/.vimrc
+curl https://ghproxy.com/https://raw.githubusercontent.com/innerNULL/config4/main/config4/vim/vimrc >> ~/.vimrc
 
 rm -rf ./*
 
@@ -48,11 +48,11 @@ rm -rf ./*
 # Install execs
 mkdir -p /tmp/install && cd /tmp/install
 # install python
-curl https://raw.githubusercontent.com/innerNULL/eastall/master/eastall/python/install.sh | sh
+curl https://ghproxy.com/https://raw.githubusercontent.com/innerNULL/eastall/master/eastall/python/install.sh | sh
 # install poetry
-curl https://raw.githubusercontent.com/innerNULL/eastall/master/eastall/poetry/install.sh | sh
+curl https://ghproxy.com/https://raw.githubusercontent.com/innerNULL/eastall/master/eastall/poetry/install.sh | sh
 # install cmake
-curl https://raw.githubusercontent.com/innerNULL/eastall/master/eastall/cmake/install.sh | sh
+curl https://ghproxy.com/https://raw.githubusercontent.com/innerNULL/eastall/master/eastall/cmake/install.sh | sh
 # clean
 rm -rf /tmp/install
 
