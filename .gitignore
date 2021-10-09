@@ -1,0 +1,6 @@
+# Vim trash
+*.un~
+
+# Rule:
+_*
+*.log
