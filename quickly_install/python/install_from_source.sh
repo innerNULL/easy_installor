@@ -34,6 +34,7 @@ function install() {
     --enable-shared \
     --enable-optimizations \
     --enable-ipv6 \
+    --enable-loadable-sqlite-extensions \
     --with-ssl
   make -j8 && make install
 }
