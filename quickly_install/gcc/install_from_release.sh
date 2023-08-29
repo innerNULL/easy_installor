@@ -18,6 +18,7 @@ function download() {
   cd ${WORKSPACE_DIR}
   wget ${RELEASE_URI}
   tar -xvzf gcc-*.tar.gz
+  rm gcc-*.tar.gz
 }
 
 
