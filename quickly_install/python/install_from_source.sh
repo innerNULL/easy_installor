@@ -44,10 +44,16 @@ function finalize() {
   cd ${CURR_DIR} && rm -rf ${WORKSPACE_DIR}
   echo "Apend following command in you '.bashrc'"
   echo "export LD_LIBRARY_PATH=${INSTALL_DIR}/lib:\$LD_LIBRARY_PATH"
+  echo "alisa python3=${INSTALL_DIR}/bin/python3"
 }
 
 
 function main() {
+  echo "=============================== NOTE ==============================="
+  echo "Before you compiling Python, you should install following packages first:"
+  echo "libsqlite3-dev libssl-dev openssl libffi-dev tk-dev zlib1g-dev build-essential libbz2-dev liblzma-dev lzma"
+  echo "===================================================================="
+  sleep 10
   init
   download
   install
