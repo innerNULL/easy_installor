@@ -5,7 +5,7 @@
 #set -x
 
 
-HOST="https://datasets-server.huggingface.co/first-rows?dataset=common_voice"
+HOST="https://datasets-server.huggingface.co/rows?dataset=mozilla-foundation%2Fcommon_voice_11_0"
 LANG="zh-CN"
 SPLIT="test"
 OUTPUT_DIR="./_hf_common_voice_dataset"
@@ -23,12 +23,13 @@ function main() {
   curl -X GET "${HOST}&config=${LANG}&split=${SPLIT}" >> metadata.json
 
   for row in $(cat metadata.json | jq -c '.rows[]'); do
-    #echo ${row}
+    echo ${row}
     local row_id=$(echo ${row} | jq '.row_idx')
     local src_url=$(echo ${row} | jq '.row.audio[0].src')
     local audio_type=$(echo "${src_url}" | awk -F'.' '{print $NF}' | sed 's/\"//g')
     local sample_name=${SPLIT}_${LANG}_${row_id}.${audio_type}
-    wget -O ./${sample_name} ${src_url}
+    wget $(echo ${src_url} | sed 's/\"//g')
+    mv audio.mp3 ${sample_name} 
     echo "Finished downloading ${src_url} to ${sample_name}"
   done
 
