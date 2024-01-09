@@ -2,6 +2,9 @@
 # date: 2024-01-08
 
 
+set -x
+
+
 # Paths
 TARGET_AUDIOS_DIR=""
 OUTPUT_AUDIOS_DIR=""
@@ -10,6 +13,7 @@ OUTPUT_AUDIOS_DIR=""
 SAMPLE_RATE=16000
 CHANNELS=1
 BIT_DEPTH=16
+OUTPUT_FORMAT=wav
 
 
 function init() {
@@ -27,7 +31,7 @@ function main() {
     files=($(ls "${TARGET_AUDIOS_DIR}"))
     for file in "${files[@]}"; do
       input_file_path="${TARGET_AUDIOS_DIR}/${file}"
-      output_file_path="${OUTPUT_AUDIOS_DIR}/${file}"
+      output_file_path=${OUTPUT_AUDIOS_DIR}/${file}.${OUTPUT_FORMAT} 
       echo "Now transforming ${input_file_path}"
       ffmpeg -i ${input_file_path} -ar ${SAMPLE_RATE} -ac ${CHANNELS} -sample_fmt s${BIT_DEPTH} ${output_file_path}
       echo "Finished and dump converted audio at ${output_file_path}"
