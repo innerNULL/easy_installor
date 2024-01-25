@@ -15,6 +15,16 @@ from torchmetrics.text import CharErrorRate
 from hanziconv import HanziConv
 
 
+def lang_mapping(text: str, lang: str) -> str:
+    out: str = text
+    if lang.split("-")[0] in {"zh"}:
+        if lang == "zh-tw":
+            out = HanziConv.toTraditional(out)
+        elif lang == "zh-cn":
+            out = HanziConv.toSimplified(out)
+    return out
+
+
 def text_norm(input_string):
     # Remove Chinese and English punctuations
     chinese_punctuations = '，。！？【】（）《》“”‘’：；“”'
@@ -33,20 +43,21 @@ def text_norm(input_string):
     return result
 
 def get_groundtruth_transcript(
-    meta_data_path: str, use_text_norm: bool=True
+    meta_data_path: str, lang: str, use_text_norm: bool=True
 ) -> Dict[str, str]:
     out: Dict[str, str] = {}
     df: DataFrame = pd.read_csv(meta_data_path, sep="\t")
     for record in df.to_dict(orient="records"):
         file_name: str = record["path"].split(".")[0]
         transcript: str = record["sentence"]
+        transcript = lang_mapping(transcript, lang)
         transcript: str = text_norm(transcript) if use_text_norm else transcript
         out[file_name] = transcript
     return out
 
 
 def get_asr_transcript(
-    inf_file_path: str, file_col: str, transcript_col: str, 
+    inf_file_path: str, file_col: str, transcript_col: str, lang: str, 
     use_text_norm: bool=True
 ) -> Dict[str, str]:
     out: Dict[str, str] = {}
@@ -58,7 +69,7 @@ def get_asr_transcript(
         file_name: str = record[file_col].split("/")[-1].split(".")[0]
         transcript: str = record[transcript_col]
         transcript = transcript.replace(" ", "")
-        transcript = HanziConv.toSimplified(transcript)
+        transcript = lang_mapping(transcript, lang)
         transcript = text_norm(transcript) if use_text_norm else transcript
         out[file_name] = transcript
     return out
@@ -89,12 +100,13 @@ if __name__ == "__main__":
     configs: Dict = json.loads(open(sys.argv[1], "r").read())
 
     groundtruth: Dict[str, str] = get_groundtruth_transcript(
-        configs["common_voice_transcript_path"], 
+        configs["common_voice_transcript_path"], configs["lang"],  
         use_text_norm=configs["text_norm"]
     )
     asr_results: Dict[str, str] = get_asr_transcript(
         configs["inf_jsonl_path"], 
         configs["inf_jsonl_path_col"], configs["inf_jsonl_transcript_col"], 
+        configs["lang"],
         use_text_norm=configs["text_norm"]
     )
     get_eval_metrics(groundtruth, asr_results)

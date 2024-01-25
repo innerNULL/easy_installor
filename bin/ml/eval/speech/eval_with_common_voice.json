@@ -1,7 +1,8 @@
 {
-  "common_voice_transcript_path": "test.tsv",
-  "inf_jsonl_path": "asr_inf_whisper_medium_zh.jsonl", 
+  "common_voice_transcript_path": "./test.tsv",
+  "inf_jsonl_path": "./asr_inf_whisper_base_zh_on_zh-TW_test_0_wav.jsonl", 
   "text_norm": true, 
   "inf_jsonl_path_col": "file", 
-  "inf_jsonl_transcript_col": "transcript"
+  "inf_jsonl_transcript_col": "transcript", 
+  "lang": "zh-tw"
 }
