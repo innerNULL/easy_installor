@@ -1,0 +1,8 @@
+{
+  "model_size": "base",
+  "audio_dir": "zh-TW_test_0_wav",
+  "lang": "zh", 
+  "output_dir": "./", 
+  "device": "cuda:1", 
+  "max_sample_size": 500
+}
