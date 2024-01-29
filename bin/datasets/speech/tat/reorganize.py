@@ -32,14 +32,17 @@ def reorg(out_dir: str, metadata_dir: str, audio_dir: str) -> Dict:
             new_metadata: Dict = {
                 "duration": metadata["音檔長度"], 
                 "transcript": metadata["漢羅台文"], 
-                "sub_dir": sub_dir_name
+                "sub_dir": sub_dir_name, 
+                "file": new_audio_file
             }
             meta_data[new_audio_file] = new_metadata
             os.system("cp %s %s" % (audio_path, new_audio_path))
             print("Copied '%s' to '%s'" % (audio_path, new_audio_path))
 
-    new_metadata_path: str = os.path.join(out_dir, "metadata.json")
-    open(new_metadata_path, "w").write(json.dumps(meta_data, ensure_ascii=False))
+    new_metadata_path: str = os.path.join(out_dir, "metadata.jsonl")
+    metadata_file = open(new_metadata_path, "w")
+    for k, v in meta_data.items():
+        metadata_file.write(json.dumps(v, ensure_ascii=False) + "\n")
     print("New metadata located at '%s'" % new_metadata_path)
 
 
