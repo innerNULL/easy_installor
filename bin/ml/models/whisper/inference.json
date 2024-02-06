@@ -1,8 +1,10 @@
 {
-  "model_size": "base",
-  "audio_dir": "zh-TW_test_0_wav",
-  "lang": "zh", 
-  "output_dir": "./", 
-  "device": "cuda:1", 
-  "max_sample_size": 500
+  "model": "openai/whisper-small",
+  "processor": "openai/whisper-small",
+  "data_path": "common_voice_16_1_test_rand_top1000.jsonl", 
+  "lang": "mandarin", 
+  "device": "cuda:3", 
+  "max_sample_size": 1000,
+  "output_path": "asr_predictions.jsonl", 
+  "groundtruth_col": "transcript" 
 }
