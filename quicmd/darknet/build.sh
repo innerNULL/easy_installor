@@ -79,7 +79,7 @@ function init() {
 
 function main() {
   init
-  #build_opencv
+  build_opencv
   build_darknet
 }
 
